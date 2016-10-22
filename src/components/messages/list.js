@@ -7,6 +7,8 @@ const MessageList = React.createClass({
     this.props.listMessages()
   },
   render() {
+    const {auth} = this.props.route
+
     return (
       <div className="pa4">
         <div className="fr">
@@ -14,6 +16,11 @@ const MessageList = React.createClass({
               onClick={this.props.newMessage}
               className="f6 link dim br2 ph3 pv2 mb2 dib white bg-black">
               New Message
+            </a>
+            <a
+              onClick={auth.logout}
+              className="f6 link dim br2 ph3 pv2 mb2 dib white bg-black ml2" >
+              Logout
             </a>
         </div>
         <h1>Messages</h1>

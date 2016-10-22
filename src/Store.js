@@ -39,6 +39,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     createMessage: msg => {
+      msg.idToken = localStorage.getItem('id_token')
       if (msg._id) {
         db.put(msg)
           .then(res => hashHistory.push('/'))
