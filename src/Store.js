@@ -30,7 +30,7 @@ const reducer = (state = { messages: [], message: {title: '', body: ''} }, actio
 const store = redux.createStore(reducer, { messages: [], message: {title: '', body: ''} }, redux.compose(
   typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
 ))
-const db = PouchDB('http://admin:codeisfun@server.pouchcloud.com/messages')
+const db = PouchDB('http://messager:codeisfun@server.pouchcloud.com/messages')
 
 const mapStateToProps = state => ({
   messages: state.messages,
