@@ -29,12 +29,23 @@ const listMessages = (nextState, replace) => {
     replace({ pathname: '/login' })
     return
   }
-  // get db to list Messages and then dispatch result
-  svc.list()
-    .then(docs => store.dispatch({
-      type: 'listMessages',
-      value: docs
-    }))
+  if (!localStorage.getItem('idToken')) {
+     setTimeout(_ => {
+       svc.list()
+         .then(docs => store.dispatch({
+           type: 'listMessages',
+           value: docs
+         }))
+     }, 100)
+  } else {
+    // get db to list Messages and then dispatch result
+    svc.list()
+      .then(docs => store.dispatch({
+        type: 'listMessages',
+        value: docs
+      }))
+
+  }
 }
 
 const App = props =>

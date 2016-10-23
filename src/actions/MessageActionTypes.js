@@ -2,5 +2,6 @@ module.exports = {
   LIST_MESSAGES: 'listMessages',
   EDIT_MESSAGE: 'editMessage',
   NEW_MESSAGE: 'newMessage',
-  ERROR_MESSAGE: 'errorMessage'
+  ERROR_MESSAGE: 'errorMessage',
+  SHOW_MESSAGES: 'showMessages'
 }

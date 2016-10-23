@@ -6,7 +6,8 @@ const {
   LIST_MESSAGES,
   EDIT_MESSAGE,
   NEW_MESSAGE,
-  ERROR_MESSAGE
+  ERROR_MESSAGE,
+  SHOW_MESSAGES
 } = require('./MessageActionTypes')
 
 const svc = MessageService()
@@ -51,6 +52,15 @@ module.exports = function (dispatch) {
           dispatch({type: NEW_MESSAGE, value: {}})
           hashHistory.push('/')
         })
+    },
+    showMessages: e => {
+      dispatch({type: SHOW_MESSAGES, value: {} })
+      hashHistory.push('/')
+    },
+    searchMessages: q => {
+      svc.search(q)
+        .then(docs => dispatch({type: LIST_MESSAGES, value: docs}))
+        .catch(err => dispatch({type: ERROR_MESSAGE, value: 'An Error Occurred when trying to list MESSAGEs'}))
     }
   }
 }

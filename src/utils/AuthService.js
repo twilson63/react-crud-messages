@@ -4,7 +4,13 @@ const { hashHistory } = require('react-router')
 export default class AuthService {
   constructor(clientId, domain) {
     // Configure Auth0
-    this.lock = new Auth0Lock(clientId, domain, {})
+    this.lock = new Auth0Lock(clientId, domain, {
+      theme: {
+        logo: '//placekitten.com/58/58'
+      },
+      socialButtonStyle: 'small'
+    })
+    //this.lock.options.theme.logo = '//placekitten.com/64/64'
     // Add callback for lock `authenticated` event
     this.lock.on('authenticated', this._doAuthentication.bind(this))
     // binds login functions to keep this context
