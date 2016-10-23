@@ -8,9 +8,9 @@ const MessageForm = React.createClass({
     const { handleSubmit, state, props, handleChange, handleRemove } = this
     return (
       <div className="pa4">
-        <Form label="Message Form" ok="Publish" cancel="Cancel" remove="Remove"
+        <Form label={`Message Form - ${props.user.username}`} ok="Publish" cancel="Cancel" remove="Remove"
           onOk={handleSubmit} onCancel={props.showMessages} onRemove={handleRemove}
-          editMode={state._id} >
+          editMode={!!state._id} >
           {/* form fields */}
           <TextField label="Subject" value={state.title} onChange={handleChange('title')} />
           <TextArea label="Body" value={state.body} onChange={handleChange('body')} />

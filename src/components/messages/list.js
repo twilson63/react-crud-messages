@@ -32,6 +32,7 @@ const MessageList = React.createClass({
           </form>
           { props.messages.messages.map(m =>
               <MessageItem
+                username={props.user.username}
                 message={m}
                 key={m._id}
                 editMessage={props.editMessage}

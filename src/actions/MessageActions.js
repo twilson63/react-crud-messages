@@ -15,16 +15,16 @@ const svc = MessageService()
 module.exports = function (dispatch) {
   return {
     createMessage: msg => {
-      msg.idToken = localStorage.getItem('id_token')
-      msg.username = localStorage.getItem('nickname')
-      
       msg.updated = (new Date()).toString()
       msg.type = 'message'
       if (msg._id) {
+        // only owners can edit their documents
+        if (msg.username !== localStorage.getItem('nickname')) return
         svc.put(msg)
           .then(res => hashHistory.push('/'))
           .catch(err => dispatch({type: ERROR_MESSAGE, value: err.message}))
       } else {
+        msg.username = localStorage.getItem('nickname')
         svc.post(msg)
           .then(res => hashHistory.push('/'))
           .catch(err => dispatch({type: ERROR_MESSAGE, value: err.message}))

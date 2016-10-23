@@ -8,7 +8,7 @@ module.exports = function () {
 
   return {
     list () {
-      return Db().allDocs({include_docs: true, limit: 10 })
+      return Db().allDocs({descending: true, include_docs: true, limit: 10 })
         .then(res => pluck('doc', res.rows))
         .then(docs => docs.filter(doc => doc._id.indexOf('_design') < 0 ))
 
