@@ -16,7 +16,10 @@ module.exports = function (dispatch) {
   return {
     createMessage: msg => {
       msg.idToken = localStorage.getItem('id_token')
+      msg.username = localStorage.getItem('nickname')
+      
       msg.updated = (new Date()).toString()
+      msg.type = 'message'
       if (msg._id) {
         svc.put(msg)
           .then(res => hashHistory.push('/'))

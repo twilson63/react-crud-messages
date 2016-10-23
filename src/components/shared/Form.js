@@ -1,6 +1,6 @@
 const h = require('react-hyperscript')
 const FormButtons = require('./FormButtons')
-const { string, func, boolean } = require('react').PropTypes
+const { string, func, bool } = require('react').PropTypes
 //
 // Usage:
 //
@@ -29,7 +29,7 @@ Form.propTypes = {
   onOk: func,
   onCancel: func,
   onRemove: func,
-  editMode: boolean
+  editMode: bool
 }
 
 module.exports = Form

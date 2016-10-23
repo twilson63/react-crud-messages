@@ -20,6 +20,10 @@ export default class AuthService {
   _doAuthentication(authResult){
     // Saves the user token
     this.setToken(authResult.idToken)
+    this.lock.getProfile(authResult.idToken, (err, profile) => {
+      //console.log(profile)
+      this.setNickname(profile.nickname)
+    })
   }
 
   login() {
@@ -42,9 +46,18 @@ export default class AuthService {
     return localStorage.getItem('id_token')
   }
 
+  setNickname (name) {
+    localStorage.setItem('nickname', name)
+  }
+
+  getNickname() {
+    return localStorage.getItem('nickname')
+  }
+
   logout(){
     // Clear user token and profile data from localStorage
-    localStorage.removeItem('id_token');
+    localStorage.removeItem('id_token')
+    localStorage.removeItem('nickname')
     hashHistory.push('/login')
   }
 }

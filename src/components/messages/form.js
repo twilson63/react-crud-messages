@@ -20,7 +20,7 @@ const MessageForm = React.createClass({
   },
   handleRemove(e) {
     if (confirm('Are you sure?')) {
-      this.props.removeMessage(this.props.message)
+      this.props.removeMessage(this.props.messages.message)
     }
   },
   handleSubmit(e) {
@@ -34,13 +34,13 @@ const MessageForm = React.createClass({
     }
   },
   getInitialState() {
-    return Object.assign({}, this.props.message)
+    return Object.assign({}, this.props.messages.message)
   },
   propTypes: {
     createMessage: React.PropTypes.func,
     removeMessage: React.PropTypes.func,
-    showMessages: React.PropTypes.func,
-    message: React.PropTypes.object
+    showMessages: React.PropTypes.func
+    //message: React.PropTypes.object
   }
 })
 

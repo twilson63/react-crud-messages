@@ -1,5 +1,5 @@
 const React = require('react')
-const { string, func, boolean } = React.PropTypes
+const { string, func, bool } = React.PropTypes
 
 const RemoveButton = require('./RemoveButton')
 
@@ -27,7 +27,7 @@ FormButtons.propTypes = {
   cancel: string,
   onCancel: func,
   onRemove: func,
-  editMode: boolean
+  editMode: bool
 }
 
 module.exports = FormButtons

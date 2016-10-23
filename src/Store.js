@@ -3,16 +3,19 @@ const reactRedux = require('react-redux')
 
 const MessageActions = require('./actions/MessageActions')
 
-const reducer = require('./reducers/MessageReducer')
+const reducers = require('./reducers')
 
 // enable redux for devTools
-const store = redux.createStore(reducer, { messages: [], message: {title: '', body: ''} }, redux.compose(
+const store = redux.createStore(reducers, {
+  messages: {messages: [], message: {title: '', body: ''} },
+  user: { username: ''}
+}, redux.compose(
   typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
 ))
 
 const mapStateToProps = state => ({
   messages: state.messages,
-  message: state.message
+  user: state.user
 })
 
 const mapDispatchToProps = MessageActions

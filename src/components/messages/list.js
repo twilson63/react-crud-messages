@@ -19,7 +19,9 @@ const MessageList = React.createClass({
               Logout
             </a>
         </div>
-        <h1>Messages</h1>
+        <h1>
+          Messages - { props.user.username }
+        </h1>
         <ul className="list pl0">
           <form onSubmit={handleSearch}>
             <input
@@ -28,7 +30,7 @@ const MessageList = React.createClass({
               onChange={handleChange}
               value={state.q} />
           </form>
-          { props.messages.map(m =>
+          { props.messages.messages.map(m =>
               <MessageItem
                 message={m}
                 key={m._id}
