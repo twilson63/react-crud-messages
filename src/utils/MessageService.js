@@ -2,8 +2,15 @@ const PouchDB = require('pouchdb')
 const { pluck } = require('ramda')
 
 module.exports = function () {
-  const db = PouchDB('https://secure-pouchcloud-jgdkeovacz.now.sh/messages')
-  //const db = PouchDB('http://localhost:4000/messages')
+  const token = localStorage.getItem('id_token')
+  const db = PouchDB('https://secure-pouchcloud-emzevjwlhd.now.sh/messages', {
+  //const db = PouchDB('http://localhost:4000/messages', {
+    ajax: {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    }
+  })
 
   return {
     list () {
